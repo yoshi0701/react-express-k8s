@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-mango
+  template:
+    metadata:
+      labels:
+        app: auth-mango
+    spec:
+      containers:
+        - name: auth-mango
+          image: mango
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-mango-srv
+spec:
+  selector:
+    app: auth-mango
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
