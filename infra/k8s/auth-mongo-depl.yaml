@@ -6,23 +6,23 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mango
+      app: auth-mongo
   template:
     metadata:
       labels:
-        app: auth-mango
+        app: auth-mongo
     spec:
       containers:
-        - name: auth-mango
-          image: mango
+        - name: auth-mongo
+          image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mango-srv
+  name: auth-mongo-srv
 spec:
   selector:
-    app: auth-mango
+    app: auth-mongo
   ports:
     - name: db
       protocol: TCP
