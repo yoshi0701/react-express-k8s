@@ -31,6 +31,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+}, {
+  toJSON: {
+    transform(doc, ret) {
+      // replace _id->id
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.password;
+      delete ret.__v;
+    }
+  }
 });
 
 // needs to access this keyword, thus not using arrow function
