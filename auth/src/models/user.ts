@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
     required: true
   }
 }, {
+  // this logic should be view logic
   toJSON: {
     transform(doc, ret) {
       // replace _id->id
